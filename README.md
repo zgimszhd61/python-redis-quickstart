@@ -61,3 +61,42 @@ Citations:
 [6] https://blog.csdn.net/HIHE_i/article/details/108834803
 [7] https://juejin.cn/s/mac%20%E6%9C%AC%E5%9C%B0%E5%90%AF%E5%8A%A8redis
 [8] https://www.cnblogs.com/chocolatexll/p/12964812.html
+
+-----
+
+在Python中使用Redis的快速入门示例主要涉及几个步骤：安装Redis及其Python客户端库、连接到Redis服务器、执行基本的Redis命令。以下是一个简单的示例，展示了如何在Python中使用Redis。
+
+首先，确保你已经安装了Redis服务器并且它正在运行。接下来，你需要安装`redis-py`，这是Redis的官方Python客户端库。你可以使用pip来安装它：
+
+```bash
+pip install redis
+```
+
+安装完成后，你可以开始编写Python代码来连接到Redis服务器并执行一些基本操作。以下是一个简单的示例：
+
+```python
+import redis
+
+# 连接到本地Redis服务器
+r = redis.Redis(host='localhost', port=6379, decode_responses=True)
+
+# 设置一个键值对
+r.set('foo', 'bar')
+
+# 获取并打印出键'foo'的值
+print(r.get('foo'))
+```
+
+在这个示例中，我们首先导入了`redis`模块，然后创建了一个`Redis`对象来连接到本地运行的Redis服务器（默认端口是6379）。我们使用`set`方法设置了一个键值对（'foo' = 'bar'），然后使用`get`方法获取键'foo'的值并打印出来。注意，我们在创建`Redis`对象时设置了`decode_responses=True`，这样返回的值就会被自动解码为字符串，否则返回的将是字节序列。
+
+这个示例展示了如何在Python中使用Redis进行最基本的操作。当然，Redis和`redis-py`支持更多高级功能和数据类型，如列表、集合、有序集合等。你可以通过阅读`redis-py`的[官方文档](https://redis-py.readthedocs.io/en/stable/)来了解更多信息[2][4]。
+
+Citations:
+[1] https://realpython.com/python-redis/
+[2] https://redis-py.readthedocs.io/en/stable/
+[3] https://developer.redis.com/howtos/quick-start/
+[4] https://redis.io/docs/latest/develop/connect/clients/python/
+[5] https://learn.microsoft.com/en-us/samples/azure-samples/azure-cache-redis-samples/quickstart-use-azure-cache-for-redis-in-python/
+[6] https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-python-get-started
+[7] https://docs.redis.com/latest/stack/gears-v1/python/quickstart/
+[8] https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/azure-cache-for-redis/cache-python-get-started.md
